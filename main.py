@@ -247,9 +247,8 @@ def get_message_type(msg: pyrogram.types.messages_and_media.message.Message):
 	except: pass
 
 
-USAGE = """**🚀 SEND ME LINK OF ANY MESSAGE TO CLONE IT HERE, FOR PRIVATE CHANNEL MESSAGE, SEND INVITE LINK FIRST.**
+USAGE = """**🚀 SEND ME LINK OF ANY MESSAGE TO CLONE IT HERE, FOR PRIVATE CHANNEL MESSAGE, SEND INVITE LINK FIRST__.**
 
-**FOR MULTIPLE POST AT A TIME :- /batch**
 
 **❣️ POWERED BY :- @HackingCraze24_7d**
 """
