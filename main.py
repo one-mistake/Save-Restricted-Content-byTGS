@@ -250,7 +250,7 @@ def get_message_type(msg: pyrogram.types.messages_and_media.message.Message):
 USAGE = """**🚀 SEND ME LINK OF ANY MESSAGE TO CLONE IT HERE, FOR PRIVATE CHANNEL MESSAGE, SEND INVITE LINK FIRST__.**
 
 
-**❣️ POWERED BY :- @HackingCraze24_7d**
+**❣️ POWERED BY :- @HackingCraze24_7Bot**
 """
 
 
