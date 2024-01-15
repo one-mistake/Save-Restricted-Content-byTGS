@@ -67,8 +67,8 @@ def progress(current, total, message, type):
 def send_start(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
 	bot.send_message(message.chat.id, f"**__👋 Hi** **{message.from_user.mention}**, **I am Save Restricted Bot by TGS, I can send you restricted content by it's post link__**\n\n{USAGE}",
 	reply_markup=InlineKeyboardMarkup([[ 
-		InlineKeyboardButton("**🚀 Hacking Craze__**", url="https://t.me/HackingCraze24_7d"),
-		InlineKeyboardButton("**🚀 Hacking Craze__**", url="https://t.me/HackingCraze24_7d")
+		InlineKeyboardButton("**__🚀 Hacking Craze__**", url="https://t.me/HackingCraze24_7d"),
+		InlineKeyboardButton("**__🖋️ Team Groww__**", url="https://t.me/HackingCraze24_7d")
 		]]), reply_to_message_id=message.id,)
 
 
