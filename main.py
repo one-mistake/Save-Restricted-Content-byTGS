@@ -28,7 +28,7 @@ else: acc = None
 @ bot.on_message(filters.command(["start"]))
 def start_command(client, message):
     user_id = message.from_user.id
-    channel_id = None
+    channel_id = client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
 
     # Check if the user is a member of the channel
     try:
