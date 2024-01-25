@@ -40,9 +40,9 @@ def start_command(client, message):
 
     # If the user is a member, proceed; otherwise, ask them to join
     if channel_id:
-        message.reply_text("You are a member of the channel. You can proceed.{channel_id}")
+        message.reply_text("You are a member of the channel. You can proceed.{member}")
     else:
-        message.reply_text("You must join the channel to proceed.{channel_id}")
+        message.reply_text("You must join the channel to proceed.{member}")
 
 
 # Start the bot
