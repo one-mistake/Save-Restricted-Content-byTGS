@@ -15,8 +15,9 @@ def getenv(var): return os.environ.get(var) or DATA.get(var, None)
 bot_token = getenv("TOKEN") 
 api_hash = getenv("HASH") 
 api_id = getenv("ID")
-bot = Client("mybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
-CHANNEL_USERNAME = "HackingCraze24_7d"
+# bot = Client("mybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+bot = pyrogram.Bot(token=bot_token)
+CHANNEL_ID = -1001639497734
 
 ss = getenv("STRING")
 if ss is not None:
@@ -25,24 +26,32 @@ if ss is not None:
 else: acc = None
 
 # Define the handler function
-@ bot.on_message(filters.command(["start"]))
-def start_command(client, message):
-    user_id = message.from_user.id
-    channel_id = client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
-
-    # Check if the user is a member of the channel
-    try:
-        member = client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
-        if member in ["member", "administrator", "creator"]:
-            channel_id = member.chat.id
-    except Exception as e:
-        print(f"Error: {e}")
-
-    # If the user is a member, proceed; otherwise, ask them to join
-    if channel_id:
-        message.reply_text("You are a member of the channel. You can proceed.{member}")
+@bot.message_handler(filters.command(["start"]))
+def start(client, message):
+    # Check if the user is already in the channel
+    if message.from_user.id not in get_channel_members(bot, CHANNEL_ID):
+        # If not, reply with the join link
+        bot.send_message(
+            chat_id=message.chat.id,
+            text=f"Please join our channel: ",
+        )
     else:
-        message.reply_text("You must join the channel to proceed.{member}")
+        # If the user is already in the channel, proceed with the bot's functionality
+        bot.send_message(
+            chat_id=message.chat.id,
+            text="Hello, welcome to our bot!",
+        )
+        
+def get_channel_members(bot, channel_id):
+    members = []
+    offset_id = None
+    while True:
+        result = bot.get_chat_members(channel_id, limit=100, offset=offset_id)
+        members.extend(result.users)
+        if not result.next_offset:
+            break
+        offset_id = result.next_offset
+    return [member.id for member in members]
 
 
 # Start the bot
