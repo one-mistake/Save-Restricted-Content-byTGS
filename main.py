@@ -33,7 +33,7 @@ def downstatus(statusfile,message):
 		with open(statusfile,"r") as downread:
 			txt = downread.read()
 		try:
-			bot.edit_message_text(message.chat.id, message.id, f"__Downloading__ : \n\n**{txt}** \n\n __Must Join : @HackingCraze24_7d__")
+			bot.edit_message_text(message.chat.id, message.id, f"__Downloading__ : **{txt}** \n\n __Must Join : @HackingCraze24_7d__")
 			time.sleep(10)
 		except:
 			time.sleep(5)
@@ -50,7 +50,7 @@ def upstatus(statusfile,message):
 		with open(statusfile,"r") as upread:
 			txt = upread.read()
 		try:
-			bot.edit_message_text(message.chat.id, message.id, f"__Uploading__ :\n\n **{txt}** \n\n __Must Join : @HackingCraze24_7d__")
+			bot.edit_message_text(message.chat.id, message.id, f"__Uploading__ : **{txt}** \n\n __Must Join : @HackingCraze24_7d__")
 			time.sleep(10)
 		except:
 			time.sleep(5)
