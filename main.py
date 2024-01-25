@@ -40,7 +40,7 @@ def start_command(client, message):
 
     # If the user is a member, proceed; otherwise, ask them to join
     if channel_id:
-        message.reply_text("You are a member of the channel. You can proceed.")
+        message.reply_text("You are a member of the channel. You can proceed." + client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id).status)
     else:
         message.reply_text("You must join the channel to proceed.")
 
