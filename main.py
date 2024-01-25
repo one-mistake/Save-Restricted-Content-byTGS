@@ -28,7 +28,7 @@ else: acc = None
 @ bot.on_message(filters.command(["start"]))
 def start_command(client, message):
     user_id = message.from_user.id
-    channel_id = None
+    channel_id = client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
 
     # Check if the user is a member of the channel
     try:
@@ -40,9 +40,10 @@ def start_command(client, message):
 
     # If the user is a member, proceed; otherwise, ask them to join
     if channel_id:
-        message.reply_text("You are a member of the channel. You can proceed." + client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id))
+        message.reply_text("You are a member of the channel. You can proceed.{channel_id}")
     else:
-        message.reply_text("You must join the channel to proceed." + client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id))
+        message.reply_text("You must join the channel to proceed.{channel_id}")
+
 
 # Start the bot
 bot.run()
