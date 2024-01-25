@@ -28,19 +28,19 @@ else: acc = None
 @ bot.on_message(filters.command(["start"]))
 def start_command(client, message):
     user_id = message.from_user.id
-    channel_id = client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
+    channel_id = None
 
     # Check if the user is a member of the channel
     try:
         member = client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id)
-        if member.status in ["member", "administrator", "creator"]:
+        if member in ["member", "administrator", "creator"]:
             channel_id = member.chat.id
     except Exception as e:
         print(f"Error: {e}")
 
     # If the user is a member, proceed; otherwise, ask them to join
     if channel_id:
-        message.reply_text("You are a member of the channel. You can proceed." + client.get_chat_member(chat_id=CHANNEL_USERNAME, user_id=user_id).status)
+        message.reply_text("You are a member of the channel. You can proceed.")
     else:
         message.reply_text("You must join the channel to proceed.")
 
