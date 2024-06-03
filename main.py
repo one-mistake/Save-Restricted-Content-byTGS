@@ -1,7 +1,7 @@
-import pyrogram
-from pyrogram import Client, filters
-from pyrogram.errors import UserAlreadyParticipant, InviteHashExpired, UsernameNotOccupied
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+import pyrogram # type: ignore
+from pyrogram import Client, filters  # type: ignore
+from pyrogram.errors import UserAlreadyParticipant, InviteHashExpired, UsernameNotOccupied # type: ignore
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton # type: ignore
 
 import time
 import os
@@ -11,12 +11,12 @@ import json
 with open('config.json', 'r') as f: DATA = json.load(f)
 def getenv(var): return os.environ.get(var) or DATA.get(var, None)
 
-bot_token = "6507936444:AAFpFhXLe7GkGafOGIgWPFN1Y3jxh_BBKGM" 
-api_hash = "16ea0f33875a977daa02661addbb3a51"
-api_id = "26441379"
+bot_token = getenv("TOKEN") 
+api_hash = getenv("HASH") 
+api_id = getenv("ID")
 bot = Client("mybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
-ss = "BQA5vswcHaUl45n17maquzVvnvega_BQMoeUtUi7pbT_XGXxaTxOhHzx26qkDlGIPN2Zo62ZzZ05dHmfrdxRbGo1dTY1_iDd84Vw53ja5xn3m42dhykvJ1pWo_SRvTfzutIrLBuiGPOyELqzr3kLofBv0H5_92jdJwdLYZtQYrW9R89CD5RrX5eZAGSXOsLo2H86kndtxIsKLEZZC2CT4U3DAKgvVGODhe-2ovW0X_aHoSRf5hT5JOD6cFTJKn0m7mEpljV_M85TXD7zbLbq_9qBAzUT0VfxYuXWSSE7wvXjzH7EI3Iuk2jpjvk3QY8o8PyaKi1KcX2_prCw3VRkaADNQWuL7QA"
+ss = getenv("STRING")
 if ss is not None:
 	acc = Client("myacc" ,api_id=api_id, api_hash=api_hash, session_string=ss)
 	acc.start()
@@ -85,7 +85,7 @@ def save(client: pyrogram.client.Client, message: pyrogram.types.messages_and_me
 			return
 
 		try:
-			try: bot.join_chat(message.text)
+			try: acc.join_chat(message.text)
 			except Exception as e: 
 				bot.send_message(message.chat.id,f"**Error** : __{e}__", reply_to_message_id=message.id)
 				return
