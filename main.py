@@ -11,12 +11,12 @@ import json
 with open('config.json', 'r') as f: DATA = json.load(f)
 def getenv(var): return os.environ.get(var) or DATA.get(var, None)
 
-bot_token = getenv("TOKEN") 
-api_hash = getenv("HASH") 
-api_id = getenv("ID")
+bot_token = "6442988655:AAEifZpozbYYV3dN1jAqZbwKfXVxFUWatxQ" 
+api_hash = "16ea0f33875a977daa02661addbb3a51"
+api_id = "26441379"
 bot = Client("mybot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
-ss = getenv("STRING")
+ss = "BQA5vswcHaUl45n17maquzVvnvega_BQMoeUtUi7pbT_XGXxaTxOhHzx26qkDlGIPN2Zo62ZzZ05dHmfrdxRbGo1dTY1_iDd84Vw53ja5xn3m42dhykvJ1pWo_SRvTfzutIrLBuiGPOyELqzr3kLofBv0H5_92jdJwdLYZtQYrW9R89CD5RrX5eZAGSXOsLo2H86kndtxIsKLEZZC2CT4U3DAKgvVGODhe-2ovW0X_aHoSRf5hT5JOD6cFTJKn0m7mEpljV_M85TXD7zbLbq_9qBAzUT0VfxYuXWSSE7wvXjzH7EI3Iuk2jpjvk3QY8o8PyaKi1KcX2_prCw3VRkaADNQWuL7QA"
 if ss is not None:
 	acc = Client("myacc" ,api_id=api_id, api_hash=api_hash, session_string=ss)
 	acc.start()
